@@ -115,7 +115,7 @@ To uninstall: turn off Start at Login, quit, and trash the app.
             'icon':str(icon),'background':str(bg),
             'window_rect':((160,160),(720,480)),
             'icon_locations':{'Terminal First.app':(192,230),'Applications':(528,230),'First Open.txt':(645,402)},
-            'icon_size':80,'text_size':13,'hide_extensions':['Terminal First.app'],
+            'icon_size':80,'text_size':13,
             'default_view':'icon-view','show_status_bar':False,'show_tab_view':False,
             'show_toolbar':False,'show_pathbar':False,'show_sidebar':False,
         })
