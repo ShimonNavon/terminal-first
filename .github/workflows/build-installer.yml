@@ -23,7 +23,7 @@ jobs:
           hdiutil attach dist/Terminal-First-1.1.dmg -nobrowse -readonly -mountpoint /tmp/terminal-first-verify
           trap 'hdiutil detach /tmp/terminal-first-verify' EXIT
           codesign --verify --deep --strict '/tmp/terminal-first-verify/Terminal First.app'
-          lipo -verify_arch arm64 x86_64 '/tmp/terminal-first-verify/Terminal First.app/Contents/MacOS/TerminalFirst'
+          lipo '/tmp/terminal-first-verify/Terminal First.app/Contents/MacOS/TerminalFirst' -verify_arch arm64 x86_64
           test "$(readlink /tmp/terminal-first-verify/Applications)" = /Applications
           test -f '/tmp/terminal-first-verify/First Open.txt'
           test -f '/tmp/terminal-first-verify/.DS_Store'
