@@ -1,53 +1,55 @@
-TERMINAL FIRST 1.0
-macOS 13 Ventura or later • Intel and Apple Silicon
+# Terminal First
 
-INSTALL
-1. Extract Terminal First App.zip.
-2. Drag Terminal First.app into Applications.
-3. Open the app. A ⌘1 control appears in the menu bar.
-4. Press Command + 1 to open or focus Apple Terminal.
+A Swift menu-bar app that reserves **Command + 1** to open or focus Apple Terminal, taking priority over ordinary app shortcuts.
 
-MENU CONTROLS
-Pause / Enable: release or reserve Command + 1.
-Start at Login: optionally launch the app when you sign in.
-Quit: stop the app and restore normal Command + 1 behavior.
+Requires macOS 13 Ventura or later. One app supports Apple Silicon and Intel Macs.
 
-The shortcut uses the physical 1 key on the main keyboard. It takes
-priority over ordinary app shortcuts while active. Another exclusive
-global hotkey utility can prevent registration; the app reports this.
-No Accessibility or Input Monitoring permission is needed. The app does
-not record keystrokes or use the network.
+## Install
 
-FIRST OPEN ON ANOTHER MAC
-This build is locally signed, not Apple Developer ID signed or notarized.
-macOS may block the first launch. If you trust this copy, use System
-Settings > Privacy & Security > Open Anyway after attempting to open it.
-Managed Macs may prohibit this. Do not disable Gatekeeper.
+1. Extract `Terminal First App.zip`.
+2. Move `Terminal First.app` into Applications and open it.
+3. Use the **⌘1** menu-bar control to pause/resume or enable **Start at Login**.
 
-IF YOU USED THE EARLIER TERMINAL HELPER
-That helper and this app cannot own Command + 1 simultaneously. To try
-this app, first stop the old helper in Terminal:
-launchctl bootout gui/$(id -u)/local.terminal-command-one
-Then choose Enable ⌘1 in the new app. The old helper's login plist must
-also be removed from ~/Library/LaunchAgents to prevent it returning at
-login. Its name is local.terminal-command-one.plist.
+Quit or pause to restore ordinary Command + 1 behavior. The shortcut uses the physical 1 key on the main keyboard. Another exclusive global hotkey utility can prevent registration; the app reports this conflict.
 
-UNINSTALL
-Turn off Start at Login, quit Terminal First, then move the app to Trash.
+No Accessibility or Input Monitoring permission is needed. The app does not record keystrokes or access the network.
 
-BUILD FROM SOURCE
-Install Apple's Command Line Tools, then run:
+## Build
+
+Install Apple's Command Line Tools with a Swift 6 compiler, then run:
+
+```sh
 bash Source/build.sh
-This creates Terminal First App.zip with both CPU architectures.
-Source/Info.plist contains the app identity and minimum macOS version.
+```
 
-VALIDATION
-Both architectures compile and the extracted app passes strict code
-signature verification. Launch and shortcut-conflict reporting were
-checked on macOS 26.6.2. Successful hotkey activation and login startup
-of this packaged app have not been tested because the earlier helper
-already owns the shortcut on the test Mac.
+This compiles both architectures with Swift 6 checks and warnings treated as errors, creates a universal executable, locally signs and verifies the app, and writes `Terminal First App.zip`.
 
-PUBLIC DISTRIBUTION
-A Developer ID Application certificate and Apple notarization are needed
-for a normal verified-developer distribution. Neither is included here.
+- `Source/main.swift`: AppKit menu, Carbon hotkey bridge, and ServiceManagement login settings.
+- `Source/Info.plist`: app identity, version, and minimum macOS version.
+- `Source/build.sh`: build and packaging steps.
+
+Version 1.1 preserves the bundle identifier and `Paused` preference from version 1.0. Carbon application callbacks run on the main thread and enter Swift's main actor before using AppKit. The delegate remains alive throughout the event loop; the Carbon handler is removed on exit.
+
+## First launch on another Mac
+
+This build is locally signed, not Developer ID signed or notarized. macOS may block the first launch. If you trust the copy, use **System Settings → Privacy & Security → Open Anyway** after trying to open it. Managed Macs may prohibit this. Do not disable Gatekeeper.
+
+A Developer ID Application certificate and Apple notarization are needed for verified-developer distribution; neither is included here.
+
+## Earlier command-line helper
+
+The earlier helper and this app cannot reserve Command + 1 simultaneously. If you installed that helper, stop it before enabling this app:
+
+```sh
+launchctl bootout gui/$(id -u)/local.terminal-command-one
+```
+
+Remove `local.terminal-command-one.plist` from `~/Library/LaunchAgents` to prevent the old helper returning at login.
+
+## Uninstall
+
+Turn off **Start at Login**, quit the app, then move it to Trash.
+
+## Validation
+
+Version 1.1 compiles for both architectures with Swift 6 checks and warnings as errors. The packaged app passes strict code-signature verification. Hotkey activation, pause/resume, and login startup of the Swift build still need an interactive test with the earlier helper stopped; those behaviors have not been verified end to end.
