@@ -17,10 +17,10 @@ jobs:
       - name: Build universal Swift app
         run: bash Source/build.sh
       - name: Build installer
-        run: python Packaging/build_dmg.py --output dist/Terminal-First-1.1.dmg
+        run: python Packaging/build_dmg.py --output dist/Terminal-First-1.2.dmg
       - name: Verify installer contents
         run: |
-          hdiutil attach dist/Terminal-First-1.1.dmg -nobrowse -readonly -mountpoint /tmp/terminal-first-verify
+          hdiutil attach dist/Terminal-First-1.2.dmg -nobrowse -readonly -mountpoint /tmp/terminal-first-verify
           trap 'hdiutil detach /tmp/terminal-first-verify' EXIT
           codesign --verify --deep --strict '/tmp/terminal-first-verify/Terminal First.app'
           lipo '/tmp/terminal-first-verify/Terminal First.app/Contents/MacOS/TerminalFirst' -verify_arch arm64 x86_64
@@ -29,7 +29,7 @@ jobs:
           test -f '/tmp/terminal-first-verify/.DS_Store'
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: Terminal-First-1.1-DMG
-          path: dist/Terminal-First-1.1.dmg
+          name: Terminal-First-1.2-DMG
+          path: dist/Terminal-First-1.2.dmg
           if-no-files-found: error
           retention-days: 30

@@ -6,7 +6,7 @@ Build the app, then package it on a Mac:
 bash Source/build.sh
 python3 -m venv .packaging-venv
 .packaging-venv/bin/pip install -r Packaging/requirements.txt
-.packaging-venv/bin/python Packaging/build_dmg.py --output dist/Terminal-First-1.1.dmg
+.packaging-venv/bin/python Packaging/build_dmg.py --output dist/Terminal-First-1.2.dmg
 ```
 
 Or run **Actions → Build Mac installer → Run workflow** on GitHub and download the installer artifact. The workflow runs only on manual dispatch and does not publish a release.
