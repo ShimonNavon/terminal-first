@@ -10,8 +10,8 @@
 
 ## Install
 
-1. Extract `Terminal First App.zip`.
-2. Drag `Terminal First.app` into Applications.
+1. [Download the Mac installer](https://github.com/ShimonNavon/terminal-first/releases/download/v1.1.0/Terminal-First-1.1.dmg) and open the DMG.
+2. Drag **Terminal First** onto **Applications** in the installer.
 3. Open the app. A **⌘1** control appears in the menu bar.
 4. Press **Command + 1** to open or focus Apple Terminal.
 
