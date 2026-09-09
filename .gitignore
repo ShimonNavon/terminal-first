@@ -1,3 +1,9 @@
 .DS_Store
 *.zip
 *.app/
+
+# Installer build outputs and local packaging environment
+*.dmg
+dist/
+.packaging-venv/
+__pycache__/
