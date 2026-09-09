@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
+  <title id="title">Terminal First: press Command + 1 to open or focus Terminal</title>
+  <desc id="desc">A Command and 1 keyboard shortcut points to an Apple Terminal window. Terminal First lives in the macOS menu bar.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101b30"/><stop offset="1" stop-color="#172f39"/></linearGradient>
+    <linearGradient id="key" x2="0" y2="1"><stop stop-color="#33465d"/><stop offset="1" stop-color="#233247"/></linearGradient>
+  </defs>
+  <rect width="1200" height="480" rx="24" fill="url(#bg)"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
+    <text x="60" y="66" fill="#75e2bc" font-size="16" font-weight="700" letter-spacing="3">TERMINAL FIRST</text>
+    <text x="60" y="118" fill="#f2f7ff" font-size="36" font-weight="700">Your terminal. One shortcut away.</text>
+    <rect x="60" y="174" width="132" height="118" rx="18" fill="#091321"/>
+    <rect x="60" y="168" width="132" height="118" rx="18" fill="url(#key)" stroke="#5d7389"/>
+    <text x="126" y="242" fill="#fff" font-size="58" text-anchor="middle">⌘</text>
+    <text x="219" y="241" fill="#9aafc6" font-size="32" text-anchor="middle">+</text>
+    <rect x="246" y="174" width="110" height="118" rx="18" fill="#091321"/>
+    <rect x="246" y="168" width="110" height="118" rx="18" fill="url(#key)" stroke="#5d7389"/>
+    <text x="301" y="242" fill="#fff" font-size="55" text-anchor="middle">1</text>
+    <text x="60" y="331" fill="#d0dcea" font-size="20">Press Command + 1</text>
+    <path d="M397 229H495m-14-14 14 14-14 14" fill="none" stroke="#75e2bc" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="541" y="156" width="599" height="211" rx="15" fill="#080e16" stroke="#476075"/>
+    <path d="M556 156H1125Q1140 156 1140 171V196H541V171Q541 156 556 156" fill="#293b4c"/>
+    <circle cx="564" cy="177" r="6" fill="#ff6059"/><circle cx="585" cy="177" r="6" fill="#ffbd2e"/><circle cx="606" cy="177" r="6" fill="#28c840"/>
+    <text x="840" y="182" fill="#d3deea" font-size="14" text-anchor="middle">Terminal</text>
+    <text x="569" y="236" fill="#75e2bc" font-family="Menlo, monospace" font-size="20">~ %</text>
+    <rect x="621" y="218" width="11" height="23" rx="1" fill="#75e2bc"/>
+    <text x="569" y="324" fill="#c8d6e5" font-size="20">Open Terminal or bring it to the front.</text>
+    <path d="M60 397H1140" stroke="#364b5b"/>
+    <text x="60" y="439" fill="#aebfd0" font-size="17">Lives in your menu bar: ⌘1</text>
+    <text x="1140" y="439" fill="#aebfd0" font-size="17" text-anchor="end">Pause anytime · Optional start at login</text>
+  </g>
+</svg>
